@@ -6,8 +6,11 @@
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.17.0",
     "castv2": "~0.1.4",
-    "debug": "^2.2.0"
+    "co": "^4.6.0",
+    "debug": "^2.2.0",
+    "mdns": "^2.3.3"
   },
   "devDependencies": {
     "array-find": "^1.0.0",

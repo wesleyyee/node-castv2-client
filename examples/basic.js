@@ -2,7 +2,7 @@ var MYPATH = "../index"; //castv2-client in production
 
 var Client                = require(MYPATH).Client;
 var DefaultMediaReceiver  = require(MYPATH).DefaultMediaReceiver;
-var scanner               = require("./lib/scanner");
+var scanner               = require("../lib/scanner");
 
 
 function ondeviceup(host, callback) {
