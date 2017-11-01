@@ -1,5 +1,6 @@
 const Client                = require('./lib/senders/platform');
 const DefaultMediaReceiver  = require('./lib/senders/default-media-receiver');
+const ClassPassController   = require('./lib/controllers/classpass');
 const mdns                  = require('mdns');
 const co                    = require('co');
 const dal                   = require('./dal');
@@ -34,6 +35,8 @@ co(function* () {
     function ondeviceup(host) {
     
       const client = new Client();
+      const controller = client.createController(ClassPassController);
+      const cpController = new Controller(controller, 'sender-0', 'receiver-0', 'urn:x-cast:classpass.video');
     
       client.connect(host, function() {
         console.log('connected, launching app ...');
@@ -64,12 +67,13 @@ co(function* () {
           console.log('app "%s" launched, loading media %s ...', player.session.displayName, media.contentId);
     
           player.load(media, { autoplay: true }, function(err, status) {
-            player.play();
             console.log('media loaded playerState=%s', status.playerState);
+            controller.send({
+              pusher_channel,
+              user_id: userId,
+            });
           });
-    
         });
-        
       });
     
       client.on('error', function(err) {
